@@ -21,8 +21,10 @@
     <title>Cloud Game ☁</title>
 </head>
 <body onload="load();">
+    
+    <p style="text-align: center; font-size: 1.5em;">Score: <span id="score" style="color: #1166ab; font-weight: bold;">0</span> </p>
 
-    <div id="game-title" class="title-container flex animate__animated animate__flipInX"></div> 
+    <div id="game-title" class="title-container flex animate__animated animate__fadeIn"></div> 
 
     <div onclick="resetAnimation(this, true)" id="cloud-one" data-ms="5" class="cloud one cloudJS"></div>
     <div onclick="resetAnimation(this, true)" id="cloud-two" data-ms="8" class="cloud two cloudJS"></div> 
