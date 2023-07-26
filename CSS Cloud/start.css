@@ -50,6 +50,12 @@ body{
     /* border: 1px solid red; */
 }
 
+.buttonsContainer:hover{
+    transition: .3s;
+    box-shadow: 0 0 10px 5px #7f6fff;
+}
+
+
 .linkBtn{
     padding: 1% 2%;
     text-decoration: none;
@@ -89,6 +95,11 @@ img{
     z-index: 99999;
     max-width: 90%;
     max-height: 90%;
+}
+
+img:hover{
+    transition: .3s;
+    filter: drop-shadow(5px 5px 10px #3f2bf5)
 }
 
 .cloud.one {

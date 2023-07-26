@@ -121,7 +121,6 @@
                 if(_elem.resetTimer)
                     clearInterval(_elem.resetTimer);
                 _elem.resetTimer = setInterval(function() {
-                    console.log('bittim ' + _elem.id);
                     resetAnimation(_elem);
                 }, parseInt(ms) * 1000);
             }
