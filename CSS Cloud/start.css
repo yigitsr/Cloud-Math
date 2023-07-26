@@ -197,13 +197,16 @@ img:hover{
 
 @media only screen and (max-width: 720px) {
     .buttonsContainer{
-        width: 70%  !important;
+        width: 70%;
+        height:80%;
+
     } 
   }
 
   @media only screen and (min-width: 720px) and (max-width: 1024px)  {
     .buttonsContainer{
-        width: 50% !important;
+        width: 50%;
+        height:80%;
     } 
   }
 
