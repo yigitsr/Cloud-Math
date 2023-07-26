@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="shortcut icon" type="image/jpg" href="./../img/icon.png" />
+    <link rel="stylesheet" href="/style.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="./../script.js" defer></script>
+
+    <title>Cloud Game ☁</title>
+</head>
+<body onload="load();">
+
+    <div id="game-title" class="title-container flex animate__animated animate__flipInX"></div> 
+
+    <div onclick="resetAnimation(this, true)" id="cloud-one" data-ms="5" class="cloud one cloudJS"></div>
+    <div onclick="resetAnimation(this, true)" id="cloud-two" data-ms="8" class="cloud two cloudJS"></div> 
+    <div onclick="resetAnimation(this, true)" id="cloud-three" data-ms="7" class="cloud three cloudJS"></div>
+    <div onclick="resetAnimation(this, true)" id="cloud-four" data-ms="6" class="cloud four cloudJS"></div>
+    <div onclick="resetAnimation(this, true)" id="cloud-five" data-ms="4" class="cloud five cloudJS"></div>
+
+
+</body>
+</html>
