@@ -21,6 +21,23 @@
     <title>Cloud Game ☁</title>
 </head>
 <body onload="load();">
+
+    <div class="game-over-modal animate__animated animate__fadeInDown" id="modal-id">
+
+        <div class="game-over-container">
+        <img src="/img/game-over-two.png" alt="" class="game-over-img animate__animated animate__fadeInLeftBig">
+    </div>
+
+
+        <!-- <h1 class="animate__animated animate__tada">GAME OVER!</h1> -->
+
+        <div class="modal-btn-container animate__animated animate__fadeInDown">
+            <a href="" class="linkBtn modalBtn" onclick="startGame() ">Restart</a>
+            <a href="/" class="linkBtn modalBtn">Change Game</a>
+        </div>
+
+    </div>
+
     
     <p id="writeScore" style="text-align: center; font-size: 1.5em;">Score: <span id="score" style="color: #1166ab; font-weight: bold;">0</span> </p>
 
@@ -31,6 +48,7 @@
     <div onclick="resetAnimation(this, true)" id="cloud-three" data-ms="7" class="cloud three cloudJS"></div>
     <div onclick="resetAnimation(this, true)" id="cloud-four" data-ms="6" class="cloud four cloudJS"></div>
     <div onclick="resetAnimation(this, true)" id="cloud-five" data-ms="4" class="cloud five cloudJS"></div>
+
 
 </body>
 </html>

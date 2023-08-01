@@ -59,19 +59,19 @@ body{
 .linkBtn{
     padding: 1% 2%;
     text-decoration: none;
-    background-color: rgb(125, 110, 255);
+    background-color: #fff;
     border-radius: 12px;
-    color: #fff;
+    color: rgb(101, 84, 255);
     z-index: 99;
-    border: none;
+    border: 6px solid rgb(101, 84, 255);
     width:80%;
     height: 20%;
-    box-shadow: 5px 5px 10px #3f2bf5;
+    font-weight: 600;
+    /* box-shadow: 5px 5px 10px #3f2bf5; */
     /* box-shadow: 10px 10px 10px #00000040; */
 }
 
 .linkBtn:hover{
-    background-color: rgb(101, 84, 255);
     transition: .5s;
     box-shadow: 5px 5px 10px #32297c;
     margin-left: 2%;

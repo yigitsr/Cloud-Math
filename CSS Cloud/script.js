@@ -159,6 +159,9 @@ let _game, titleContainer;
 function pickGame(_index) {
     _index += getRandomValue(1, 2) > 1 ? 0 : 3;
     _game = _games['game' + _index];
+    _game.level = 0;
+    _game.speedUp = 1; 
+
     startGame();
 }
 
@@ -189,7 +192,10 @@ function getRandomValue(min, max) {
 
 function setAnimationTime(_elem) {
     const r = document.querySelector(':root');
-    const ms = _elem.getAttribute('data-ms');
+    let ms = _elem.getAttribute('data-ms');
+    if(_game.level > 0 ){
+        ms *= (1-((_game.level) / 10));
+    }
     r.style.setProperty('--' + _elem.id + '-ms', ms + 's');
     setResetTimer(_elem);
 }
@@ -213,8 +219,18 @@ function resetAnimation (_elem) {
 
 function increaseScore(){
         score++;
+        if((score% _game.speedUp) === 0){
+            _game.level++;
+            if(_game.level < 8){
+                setSpeed();
+            }
+            else{
+                removeClouds();
+                document.getElementById('modal-id').classList.add('dis-inherit')
+            }
+
+        }
         document.getElementById("score").textContent = score;
-        localStorage.setItem('score' + _game.key, score);
 }
 
 successSound.addEventListener("click", function(){
@@ -233,7 +249,6 @@ function successPlay()
         else{
             successSound.currentTime = 0;
         }
-
 }
 
 function failPlay() 
@@ -247,31 +262,30 @@ function failPlay()
 
 }
 
+let clouds;
+
 function load() {
         titleContainer = document.getElementById("game-title");
         pickGame(parseInt(getQueryString('v')));
         titleContainer.innerText = _game.title;
-        const cloud1 = document.getElementById('cloud-one');
-        const cloud2 = document.getElementById('cloud-two');
-        const cloud3 = document.getElementById('cloud-three');
-        const cloud4 = document.getElementById('cloud-four');
-        const cloud5 = document.getElementById('cloud-five');
-        resetAnimation(cloud1);
-        resetAnimation(cloud2);
-        resetAnimation(cloud3);
-        resetAnimation(cloud4);
-        resetAnimation(cloud5);
-        setAnimationTime(cloud1);
-        setAnimationTime(cloud2);
-        setAnimationTime(cloud3);
-        setAnimationTime(cloud4);
-        setAnimationTime(cloud5);
-
-        score = parseInt(localStorage.getItem('score' + _game.key) ?? '0');
+        clouds = document.querySelectorAll('.cloud');
+        for(const cloud of clouds)
+            resetAnimation(cloud);
+        setSpeed();
         document.getElementById('score').innerText = score;
 }
 
 function getQueryString(_key){
         const urlParams = new URLSearchParams(window.location.search);
         return urlParams.get(_key);
+}
+
+function setSpeed(){
+    for(const cloud of clouds)
+        setAnimationTime(cloud);
+}
+
+function removeClouds(){
+    for(const cloud of clouds)
+        cloud.remove();
 }
