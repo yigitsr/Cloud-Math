@@ -6,6 +6,7 @@ const _games = {
         game0:
         {
             title: 'Find Prime Numbers',
+            key: 'KeyPrime',
             create: function () {
                 return getRandomValue(1, 100);
             },
@@ -17,11 +18,9 @@ const _games = {
                     if ((_num % i) == 0)
                         return false;
                 }
-                
                 if(_numString){
                     successPlay()
-                    score++;
-                    document.getElementById("score").textContent = score;
+                    increaseScore()
                 }
                 else
                     failPlay()  
@@ -33,13 +32,12 @@ const _games = {
         game1:
         {
             title: 'Find Even Numbers',
+            key: 'KeyEven',
             create: function () {
                 return getRandomValue(1, 100) ;
             },
             check: function (_numString) {
                 
-              
-
                 const _result =  (parseInt(_numString)  %2) === 0
 
                 if(_result){
@@ -50,7 +48,6 @@ const _games = {
                 else
                     failPlay()  
                 
-                    
                 return _result;
                 
             }
@@ -60,6 +57,8 @@ const _games = {
         game2:
         {
                 title: 'Find Negative Numbers',
+                key: 'KeyNegative',
+                
                 create: function () {
                     return getRandomValue(1, 100) * (getRandomValue(1, 2) > 1 ? 1 : -1);
                 },
@@ -83,6 +82,8 @@ const _games = {
         game3:
         {
                 title: 'Find Composite Numbers',
+                key: 'KeyComposite',
+
                 create: function () {
                     return getRandomValue(1, 100);
                 },
@@ -110,6 +111,8 @@ const _games = {
         game4:
         {
             title: 'Find Odd Numbers',
+            key: 'KeyOdd',
+
             create: function () {
                 return getRandomValue(1, 100) ;
             },
@@ -131,6 +134,7 @@ const _games = {
         game5:
         {
             title: 'Find Positive Numbers',
+            key: 'KeyPositive',
             create: function () {
                 return getRandomValue(1, 100) * (getRandomValue(1, 2) > 1 ? 1 : -1);
             },
@@ -160,16 +164,14 @@ function pickGame(_index) {
 
 function startGame() {
 
-                        
-
     const _clouds = document.querySelectorAll('.cloudJS');
-    for (const _cloud of _clouds) {
+    for (const _cloud of _clouds){
         _cloud.innerText = _game.create();
         _cloud.onclick = function () {
             const _result = _game.check(_cloud.innerText);
             if (_result){
 
-                    console.log("true")
+                console.log("true")
                 resetAnimation(_cloud);
             }
             else{
@@ -212,6 +214,7 @@ function resetAnimation (_elem) {
 function increaseScore(){
         score++;
         document.getElementById("score").textContent = score;
+        localStorage.setItem('score' + _game.key, score);
 }
 
 successSound.addEventListener("click", function(){
@@ -263,6 +266,9 @@ function load() {
         setAnimationTime(cloud3);
         setAnimationTime(cloud4);
         setAnimationTime(cloud5);
+
+        score = parseInt(localStorage.getItem('score' + _game.key) ?? '0');
+        document.getElementById('score').innerText = score;
 }
 
 function getQueryString(_key){

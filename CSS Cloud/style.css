@@ -84,7 +84,7 @@ body {
     border-radius: 1000px;
     cursor: pointer;
     transition: box-shadow .5s;
-    animation: zoomies 5s infinite linear; 
+    /* animation: zoomies 5s infinite linear;  */
 }
 
 .cloud:hover{
